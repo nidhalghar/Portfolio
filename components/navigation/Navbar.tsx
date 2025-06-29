@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -69,9 +70,16 @@ export const Navbar = () => {
           {/* Logo */}
           <button
             onClick={() => scrollToSection("home")}
-            className="text-2xl font-bold gradient-text"
+            className="flex items-center space-x-2"
           >
-            Portfolio
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                width={120}
+                height={120}
+                className="w-32 h-15"
+              />
+           
           </button>
 
           {/* Desktop Navigation */}
@@ -147,4 +155,4 @@ export const Navbar = () => {
       />
     </motion.nav>
   );
-}; 
+};

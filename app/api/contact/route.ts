@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     // Configuration de l'email
     const mailOptions = {
       from: {
-        name: 'OCRFID SYSTEME',
+        name: 'NIDHAL GHARBI',
         address: 'nidhalg622@gmail.com'
       },
       to: 'nidhalg622@gmail.com',

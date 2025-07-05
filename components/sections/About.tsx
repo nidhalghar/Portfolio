@@ -255,7 +255,7 @@ export const About = () => {
                   transition={{ delay: 0.2, duration: 0.5 }}
                   className="text-lg text-gray-600 dark:text-gray-300"
                 >
-                  Développeur Full Stack avec un an d&apos;expérience, je conçois des applications web fiables et performantes. Autonome, curieux et rigoureux, je cherche à contribuer à des projets innovants tout en continuant à progresser dans un environnement stimulant.
+                  Développeur Full Stack avec un an d'expérience, je conçois des applications web fiables et performantes. Autonome, curieux et rigoureux, je cherche à contribuer à des projets innovants tout en continuant à progresser dans un environnement stimulant.
                 </motion.p>
 
                 <motion.p
@@ -271,7 +271,7 @@ export const About = () => {
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   {[
-                    { number: "1+", label: "Année d&apos;expérience" },
+                    { number: "1+", label: "Année d'expérience" },
                     { number: "7+", label: "Projets Réalisés" },
                     { number: "5+", label: "Technologies Maîtrisées" },
                     { number: "100%", label: "Satisfaction Client" },

@@ -197,14 +197,16 @@ export const Projects = () => {
           ))}
         </Swiper>
 
+        {/* Pagination centrée sous le carrousel */}
+        <div className="swiper-pagination !mt-6 !mb-0 flex justify-center"></div>
+
         {/* Navigation buttons */}
-        <div className="flex justify-center items-center mt-8 sm:mt-12 gap-4">
+        <div className="flex justify-center items-center mt-4 gap-4">
           <button className="swiper-button-prev !static !w-10 !h-10 !bg-white dark:!bg-gray-800 !rounded-full !shadow-lg hover:!bg-gray-50 dark:hover:!bg-gray-700 transition-colors">
             <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <div className="swiper-pagination !relative !bottom-0 !w-auto"></div>
           <button className="swiper-button-next !static !w-10 !h-10 !bg-white dark:!bg-gray-800 !rounded-full !shadow-lg hover:!bg-gray-50 dark:hover:!bg-gray-700 transition-colors">
             <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

@@ -271,7 +271,7 @@ export const About = () => {
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   {[
-                    { number: "1+", label: "Année d&#39;expérience" },
+                    { number: "1+", label: "Année expérience" },
                     { number: "7+", label: "Projets Réalisés" },
                     { number: "5+", label: "Technologies Maîtrisées" },
                     { number: "100%", label: "Satisfaction Client" },

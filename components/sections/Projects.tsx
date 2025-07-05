@@ -26,7 +26,7 @@ const projects: Project[] = [
     title: "FreeOui - Gestion d'offres promotionnelles",
     description: "Application web complète de gestion et diffusion d'offres promotionnelles, offrant une expérience utilisateur optimisée pour la découverte et la gestion des promotions.",
     image: "/freeoui.png",
-    tags: ["Nuxt.js", "Laravel", "MongoDB", "Firebase", "REST API", "Tailwind"],
+    tags: [ "Laravel", "Bootstrap", "REST API",],
     demoLink: "https://freeoui.com",
   },
   {

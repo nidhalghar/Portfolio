@@ -62,7 +62,7 @@ const projects: Project[] = [
     description: "Application web complète de création et gestion de CV professionnels et lettres de motivation, avec des templates personnalisables et un système de recrutement intégré.",
     image: "/resume.png",
     tags: ["Next.js", "Shadcn UI", "MongoDB", "GitHub", "PDF Generation", "AI Assistant"],
-    demoLink: "http://34.121.203.29:3000/",
+    demoLink: "https://app.2nsolution.com/",
   },
   {
     title: "Privatechlab - Site Vitrine",

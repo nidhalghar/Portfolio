@@ -55,7 +55,7 @@ const projects: Project[] = [
     description: "Application web de gestion d'événements avec fonctionnalités de réservation de stands, gestion des exposants et interface d'administration sécurisée.",
     image: "/dotexpo.png",
     tags: ["Next.js", "Shadcn UI", "MongoDB", "GitHub"],
-    demoLink: "https://dotexpo.4prod.tn",
+    demoLink: "https://dotexpo.tn",
   },
   {
     title: "2nsolution - Builder de CV & Lettres de Motivation",

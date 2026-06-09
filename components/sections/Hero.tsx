@@ -38,7 +38,7 @@ export const Hero = () => {
             className="text-white rounded-full px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 text-sm sm:text-base font-medium shadow-md transition-all hover:shadow-lg hover:scale-105"
             style={{ backgroundColor: "#008090" }}
           >
-            <a href="/Cv nidhal .pdf" download>Télécharger mon CV</a>
+            <a href="/Gharbi Nidhal.pdf" download>Télécharger mon CV</a>
           </Button>
         </div>
       </div>

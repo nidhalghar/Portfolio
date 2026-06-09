@@ -37,11 +37,11 @@ const projects: Project[] = [
     demoLink: "https://srtsiliana.tn",
   },
   {
-    title: "ADAPT - Gestion des remboursements agricoles",
-    description: "Plateforme web dédiée à la gestion des remboursements et au suivi des agriculteurs, incluant des fonctionnalités avancées de vérification et de reporting.",
-    image: "/adapt.png",
-    tags: ["Laravel", "Bootstrap", "REST API"],
-    demoLink: "https://adapt-cereales.org/",
+    title: "Padel Society - Club de Padel Premium",
+    description: "Application web conçue pour la gestion et la promotion d’un club de padel haut de gamme, incluant les réservations, les adhésions, l’académie, les offres et les événements. Réalisée avec Nuxt.js et MongoDB pour garantir performance, flexibilité et évolutivité.",
+    image: "/padel-society.png",
+    tags: ["Nuxt.js", "MongoDB", "Tailwind CSS"],
+    demoLink: "https://padel.4prod.tn/",
   },
   {
     title: "Saphir Palace - Gestion hôtelière",
@@ -58,11 +58,11 @@ const projects: Project[] = [
     demoLink: "https://dotexpo.4prod.tn",
   },
   {
-    title: "Resum.io - Builder de CV & Lettres de Motivation",
+    title: "2nsolution - Builder de CV & Lettres de Motivation",
     description: "Application web complète de création et gestion de CV professionnels et lettres de motivation, avec des templates personnalisables et un système de recrutement intégré.",
     image: "/resume.png",
     tags: ["Next.js", "Shadcn UI", "MongoDB", "GitHub", "PDF Generation", "AI Assistant"],
-    demoLink: "https://app.2nsolution.com/",
+    demoLink: "https://2nsolution.com/",
   },
   {
     title: "Privatechlab - Site Vitrine",

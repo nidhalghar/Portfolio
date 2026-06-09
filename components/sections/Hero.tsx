@@ -50,7 +50,7 @@ export const Hero = () => {
           <div className="w-full h-full rounded-full overflow-hidden border-4 sm:border-6 lg:border-8 border-white dark:border-gray-800 relative bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 shadow-2xl">
             <div className="w-full h-full relative">
               <Image
-                src="/pixelcut-export (1).png"
+                src="/nidhal cv image.png"
                 alt="Photo de profil de Nidhal"
                 fill
                 className="object-cover"

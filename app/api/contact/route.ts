@@ -11,8 +11,8 @@ export async function POST(req: Request) {
       port: 587,
       secure: false,
       auth: {
-        user: 'nidhalg622@gmail.com',
-        pass: 'pdpjcbnbrmrsdeql'
+        user: 'nidhal1gharbi@gmail.com',
+        pass: 'tpybnkxawnmascpu'
       },
       tls: {
         ciphers: 'SSLv3'

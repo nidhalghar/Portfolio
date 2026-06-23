@@ -3,15 +3,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-import { Button } from "../ui/button";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
 
 interface Project {
   title: string;
@@ -23,229 +14,129 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "FreeOui - Gestion d'offres promotionnelles",
-    description: "Application web complète de gestion et diffusion d'offres promotionnelles, offrant une expérience utilisateur optimisée pour la découverte et la gestion des promotions.",
+    title: "FreeOui",
+    description: "Application de gestion et diffusion d'offres promotionnelles avec expérience utilisateur optimisée.",
     image: "/freeoui.png",
-    tags: [ "Laravel", "Bootstrap", "REST API",],
+    tags: ["Laravel", "API"],
     demoLink: "https://freeoui.com",
   },
   {
-    title: "SRTSILIANA - Gestion des abonnements scolaires",
-    description: "Plateforme web de gestion des abonnements scolaires avec maintenance continue et améliorations des fonctionnalités pour une meilleure expérience utilisateur.",
+    title: "SRTSILIANA",
+    description: "Plateforme de gestion des abonnements scolaires avec maintenance continue et améliorations.",
     image: "/srts.png",
-    tags: ["Laravel", "Bootstrap", "REST API"],
+    tags: ["Laravel", "UX"],
     demoLink: "https://srtsiliana.tn",
   },
   {
-    title: "Padel Society - Club de Padel Premium",
-    description: "Application web conçue pour la gestion et la promotion d’un club de padel haut de gamme, incluant les réservations, les adhésions, l’académie, les offres et les événements. Réalisée avec Nuxt.js et MongoDB pour garantir performance, flexibilité et évolutivité.",
+    title: "Padel Society",
+    description: "Gestion d'un club de padel premium : réservations, adhésions et gestion d'événements.",
     image: "/padel-society.png",
-    tags: ["Nuxt.js", "MongoDB", "Tailwind CSS"],
+    tags: ["Nuxt.js", "MongoDB"],
     demoLink: "https://padel.4prod.tn/",
   },
   {
-    title: "Saphir Palace - Gestion hôtelière",
-    description: "Application web complète pour la gestion des opérations hôtelières, incluant réservations, planning des chambres, facturation et suivi client.",
+    title: "Saphir Palace",
+    description: "Application de gestion hôtelière complète pour réservations et facturations.",
     image: "/saphir.png",
-    tags: ["Laravel", "Bootstrap", "REST API", "MySQL"],
+    tags: ["Laravel", "Booking"],
     demoLink: "https://saphir.demos.tn",
   },
   {
-    title: "Dot Expo - Gestion d'événements",
-    description: "Application web de gestion d'événements avec fonctionnalités de réservation de stands, gestion des exposants et interface d'administration sécurisée.",
+    title: "Dot Expo",
+    description: "Gestion d'événements avec réservation de stands et administration sécurisée.",
     image: "/dotexpo.png",
-    tags: ["Next.js", "Shadcn UI", "MongoDB", "GitHub"],
+    tags: ["Next.js", "Shadcn UI"],
     demoLink: "https://dotexpo.tn",
   },
   {
-    title: "2nsolution - Builder de CV & Lettres de Motivation",
-    description: "Application web complète de création et gestion de CV professionnels et lettres de motivation, avec des templates personnalisables et un système de recrutement intégré.",
+    title: "2nsolution",
+    description: "Application de création de CV professionnels avec templates personnalisables.",
     image: "/resume.png",
-    tags: ["Next.js", "Shadcn UI", "MongoDB", "GitHub", "PDF Generation", "AI Assistant"],
+    tags: ["Next.js", "Builder"],
     demoLink: "https://2nsolution.com/",
   },
-  {
-    title: "Privatechlab - Site Vitrine",
-    description: "Site web one-page moderne pour une société de développement, présentant les services, l'équipe et les réalisations avec une interface élégante et responsive.",
-    image: "/priva.png",
-    tags: ["Next.js", "Tailwind CSS", "Framer Motion", "Responsive Design"],
-    demoLink: "https://privatechlab.com",
-  }
 ];
-
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.2 }}
-      className="group relative h-full"
-    >
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl blur opacity-25 group-hover:opacity-100 transition duration-1000"></div>
-      <div className="relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden h-full">
-        <div className="relative h-40 sm:h-48 overflow-hidden">
-          <Image
-            src={project.image}
-            alt={project.title}
-            layout="fill"
-            objectFit="cover"
-            className="transform group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-          <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
-            <h3 className="text-lg sm:text-xl font-bold text-white mb-2 line-clamp-2">{project.title}</h3>
-            <div className="flex flex-wrap gap-1 sm:gap-2">
-              {project.tags.slice(0, 4).map((tag, i) => (
-                <span
-                  key={i}
-                  className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs rounded-full bg-white/20 text-white backdrop-blur-sm"
-                >
-                  {tag}
-                </span>
-              ))}
-              {project.tags.length > 4 && (
-                <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs rounded-full bg-white/20 text-white backdrop-blur-sm">
-                  +{project.tags.length - 4}
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="p-4 sm:p-6">
-          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 sm:line-clamp-4">
-            {project.description}
-          </p>
-          <div className="flex gap-2 sm:gap-4">
-            <Button
-              variant="default"
-              size="sm"
-              className="bg-gradient-to-r from-[#008090] to-[#008090] hover:from-[#008090]/80 hover:to-[#008090]/80 text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2"
-              asChild
-            >
-              <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                Voir la démo
-              </a>
-            </Button>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
 
 export const Projects = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <section ref={ref} id="projects" className="py-12 sm:py-16 lg:py-20 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm relative overflow-hidden">
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-50/10 to-transparent dark:from-transparent dark:via-purple-900/10 dark:to-transparent"></div>
+    <section
+      ref={ref}
+      id="projects"
+      className="py-24 px-gutter bg-surface-container-lowest transition-all duration-1000"
+    >
+      <div className="max-w-container-max mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="font-label-caps text-label-caps text-primary mb-2">
+              PORTFOLIO
+            </h2>
+            <h3 className="font-headline-md text-headline-md">Mes Projets</h3>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="font-body-md text-body-md text-on-surface-variant max-w-md"
+          >
+            Découvrez mes principales réalisations professionnelles, alliant design raffiné et performance technique.
+          </motion.p>
+        </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          className="text-center mb-8 sm:mb-12 lg:mb-16"
-        >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#008090] via-[#008090] to-[#008090]">
-            Mes Projets
-          </h2>
-          <p className="mt-2 sm:mt-4 text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Découvrez mes principales réalisations professionnelles
-          </p>
-        </motion.div>
-
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          }}
-          pagination={{ 
-            clickable: true,
-            el: '.swiper-pagination',
-            dynamicBullets: true,
-          }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true
-          }}
-          spaceBetween={16}
-          slidesPerView={1}
-          breakpoints={{
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 24,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-          }}
-          className="project-slider"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <SwiperSlide key={index}>
-              <ProjectCard project={project} index={index} />
-            </SwiperSlide>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="project-card group rounded-2xl overflow-hidden glass-effect flex flex-col h-full"
+            >
+              <div className="relative overflow-hidden aspect-video bg-surface-bright">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="grayscale-image w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-8 flex flex-col grow">
+                <div className="flex gap-2 mb-4">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="font-label-caps text-[10px] bg-primary/10 text-primary px-2 py-1 rounded"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <h4 className="font-headline-md text-xl mb-4">
+                  {project.title}
+                </h4>
+                <p className="font-body-md text-body-md text-on-surface-variant mb-6 grow">
+                  {project.description}
+                </p>
+                <a
+                  href={project.demoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary flex items-center gap-2 font-bold group-hover:translate-x-2 transition-transform"
+                >
+                  Découvrir
+                  <span className="material-symbols-outlined">north_east</span>
+                </a>
+              </div>
+            </motion.div>
           ))}
-        </Swiper>
-
-        {/* Pagination centrée sous le carrousel */}
-        <div className="swiper-pagination !mt-6 !mb-0 flex justify-center"></div>
-
-        {/* Navigation buttons */}
-        <div className="flex justify-center items-center mt-4 gap-4">
-          <button className="swiper-button-prev !static !w-10 !h-10 !bg-white dark:!bg-gray-800 !rounded-full !shadow-lg hover:!bg-gray-50 dark:hover:!bg-gray-700 transition-colors">
-            <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button className="swiper-button-next !static !w-10 !h-10 !bg-white dark:!bg-gray-800 !rounded-full !shadow-lg hover:!bg-gray-50 dark:hover:!bg-gray-700 transition-colors">
-            <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
         </div>
       </div>
-
-      <style jsx global>{`
-        .project-slider .swiper-pagination-bullet {
-          background: #008090;
-          opacity: 0.3;
-        }
-        .project-slider .swiper-pagination-bullet-active {
-          opacity: 1;
-        }
-        .line-clamp-2 {
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-        .line-clamp-3 {
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-        .line-clamp-4 {
-          display: -webkit-box;
-          -webkit-line-clamp: 4;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-        .swiper-button-next::after,
-        .swiper-button-prev::after {
-          display: none !important;
-        }
-      `}</style>
     </section>
   );
 };

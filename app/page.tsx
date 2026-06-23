@@ -4,10 +4,11 @@ import { Skills } from "@/components/sections/Skills";
 import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
 import { Navbar } from "@/components/navigation/Navbar";
+import { Footer } from "@/components/sections/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-900">
+    <main className="min-h-screen bg-background">
       <Navbar />
       <section id="home">
         <Hero />
@@ -16,6 +17,7 @@ export default function Home() {
       <Skills />
       <Projects />
       <Contact />
+      <Footer />
     </main>
   );
 }

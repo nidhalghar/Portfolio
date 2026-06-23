@@ -1,68 +1,56 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
-import { Button } from "../ui/button";
+import { useRef, useState } from "react";
 
 export const Contact = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
-  const [status, setStatus] = useState({
-    message: '',
-    type: ''
-  });
+  const [status, setStatus] = useState<{ message: string; type: string } | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useEffect(() => {
-    setDimensions({
-      width: window.innerWidth,
-      height: window.innerHeight
-    });
-  }, []);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setStatus({ message: '', type: '' });
+    setStatus(null);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-
       if (response.ok) {
         setStatus({
-          message: 'Message envoyé avec succès!',
-          type: 'success'
+          message: "Message envoyé avec succès !",
+          type: "success",
         });
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: "", email: "", message: "" });
       } else {
-        throw new Error(data.message || 'Une erreur est survenue');
+        throw new Error("Erreur lors de l'envoi");
       }
     } catch {
       setStatus({
-        message: 'Erreur lors de l\'envoi du message. Veuillez réessayer.',
-        type: 'error'
+        message: "Erreur lors de l'envoi du message. Veuillez réessayer.",
+        type: "error",
       });
     } finally {
       setIsSubmitting(false);
@@ -73,111 +61,115 @@ export const Contact = () => {
     <section
       ref={ref}
       id="contact"
-      className="py-20 relative overflow-hidden min-h-screen bg-gradient-to-b from-transparent to-transparent"
+      className="py-24 px-gutter transition-all duration-1000"
     >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-full h-full bg-[radial-gradient(circle_800px_at_50%_50%,#00809010,transparent)]"></div>
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#008090]/20 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#008090]/20 to-transparent"></div>
-      </div>
-
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#008090]/10 to-[#008090]/10 animate-pulse"></div>
-        {[...Array(50)].map((_, i) => (
+      <div className="max-w-container-max mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-[#008090]/20 rounded-full"
-            initial={{
-              x: Math.random() * (dimensions.width || 1000),
-              y: Math.random() * (dimensions.height || 800),
-            }}
-            animate={{
-              x: Math.random() * (dimensions.width || 1000),
-              y: Math.random() * (dimensions.height || 800),
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        ))}
-      </div>
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-5"
+          >
+            <h2 className="font-label-caps text-label-caps text-primary mb-2">
+              CONTACT
+            </h2>
+            <h3 className="font-headline-md text-headline-md mb-6">
+              Discutons de votre projet
+            </h3>
+            <p className="font-body-lg text-body-lg text-on-surface-variant mb-10">
+              Prêt à transformer vos idées en réalité numérique ? N&apos;hésitez pas
+              à me contacter pour une collaboration ou simplement pour dire bonjour.
+            </p>
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="bg-primary-container/20 p-3 rounded-lg text-primary">
+                  <span className="material-symbols-outlined">mail</span>
+                </div>
+                <div>
+                  <div className="font-label-caps text-[10px] text-on-surface-variant">
+                    EMAIL
+                  </div>
+                  <a
+                    href="mailto:nidhal1gharbi@gmail.com"
+                    className="font-body-md text-body-md font-bold hover:text-primary transition-colors"
+                  >
+                    nidhal1gharbi@gmail.com
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="bg-primary-container/20 p-3 rounded-lg text-primary">
+                  <span className="material-symbols-outlined">location_on</span>
+                </div>
+                <div>
+                  <div className="font-label-caps text-[10px] text-on-surface-variant">
+                    LOCATION
+                  </div>
+                  <div className="font-body-md text-body-md font-bold">
+                    Tunisie
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          className="max-w-2xl mx-auto text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#008090] via-[#008090] to-[#008090]">
-            Contactez-moi
-          </h2>
-          <p className="mt-4 text-gray-600 dark:text-gray-300">
-            N&apos;hésitez pas à me contacter pour discuter de vos projets
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ delay: 0.2 }}
-          className="max-w-md mx-auto"
-        >
-          <div className="bg-white/20 dark:bg-gray-800/20 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/10 dark:border-gray-700/10">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {status.message && (
-                <div className={`p-4 rounded-lg ${
-                  status.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-                }`}>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:col-span-7"
+          >
+            <form
+              onSubmit={handleSubmit}
+              className="glass-effect p-10 rounded-2xl space-y-6"
+            >
+              {status && (
+                <div
+                  className={`p-4 rounded-lg ${
+                    status.type === "success"
+                      ? "bg-green-500/20 text-green-300"
+                      : "bg-red-500/20 text-red-300"
+                  }`}
+                >
                   {status.message}
                 </div>
               )}
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                >
-                  Nom
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-[#008090] focus:border-transparent outline-none transition-all duration-200"
-                  placeholder="Votre nom"
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="font-label-caps text-label-caps text-on-surface-variant">
+                    NOM
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-surface-container border border-outline-variant/30 rounded-xl px-6 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                    placeholder="Votre nom"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="font-label-caps text-label-caps text-on-surface-variant">
+                    EMAIL
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-surface-container border border-outline-variant/30 rounded-xl px-6 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                    placeholder="votre@email.com"
+                  />
+                </div>
               </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-[#008090] focus:border-transparent outline-none transition-all duration-200"
-                  placeholder="votre@email.com"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                >
-                  Message
+              <div className="space-y-2">
+                <label className="font-label-caps text-label-caps text-on-surface-variant">
+                  MESSAGE
                 </label>
                 <textarea
                   id="message"
@@ -185,54 +177,22 @@ export const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={4}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:ring-2 focus:ring-[#008090] focus:border-transparent outline-none transition-all duration-200"
-                  placeholder="Votre message..."
+                  rows={5}
+                  className="w-full bg-surface-container border border-outline-variant/30 rounded-xl px-6 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                  placeholder="Parlez-moi de votre projet..."
                 ></textarea>
               </div>
-              <Button
+              <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-[#008090] to-[#008090] hover:from-[#008090]/80 hover:to-[#008090]/80"
+                className="w-full bg-primary-container text-on-primary-container py-4 rounded-xl font-bold hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
-              </Button>
+                {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
+              </button>
             </form>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ delay: 0.4 }}
-            className="mt-12 text-center space-y-4"
-          >
-            <div className="flex items-center justify-center space-x-6">
-              <a
-                href="https://github.com/nidhalghar"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-300 hover:text-[#008090] dark:hover:text-[#008090] transition-colors"
-              >
-                GitHub
-              </a>
-              <a
-                href="https://www.linkedin.com/in/nidhal-gharbi-6b27a8254/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-300 hover:text-[#008090] dark:hover:text-[#008090] transition-colors"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="mailto:nidhal1gharbi@gmail.com"
-                className="text-gray-600 dark:text-gray-300 hover:text-purple-500 dark:hover:text-purple-400 transition-colors"
-              >
-                Email
-              </a>
-            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
-}; 
+};

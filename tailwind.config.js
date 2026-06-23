@@ -5,62 +5,92 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: ['media', 'class'],
+  darkMode: ['class'],
   theme: {
-  	extend: {
-  		colors: {
-  			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
-  			},
-  			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
-  			},
-  			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
-  			},
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
-  			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
-  			},
-  			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
-  			},
-  			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
-  			},
-  			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
-  				foreground: 'hsl(var(--destructive-foreground))'
-  			},
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
-  			chart: {
-  				'1': 'hsl(var(--chart-1))',
-  				'2': 'hsl(var(--chart-2))',
-  				'3': 'hsl(var(--chart-3))',
-  				'4': 'hsl(var(--chart-4))',
-  				'5': 'hsl(var(--chart-5))'
-  			}
-  		},
-  		fontFamily: {
-  			sans: [
-  				'var(--font-inter)'
-  			]
-  		},
-  		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		}
-  	}
+    extend: {
+      colors: {
+        "surface-container-low": "#141b2b",
+        "surface-bright": "#323949",
+        "primary-container": "#008090",
+        "inverse-primary": "#006876",
+        "secondary-container": "#7c03d3",
+        "secondary-fixed": "#f0dbff",
+        "on-secondary": "#490080",
+        "on-secondary-container": "#dfbcff",
+        "on-secondary-fixed": "#2c0051",
+        "surface": "#0c1322",
+        "inverse-surface": "#dce2f7",
+        "outline-variant": "#3e494b",
+        "secondary": "#ddb8ff",
+        "on-secondary-fixed-variant": "#6800b4",
+        "surface-container-lowest": "#070e1d",
+        "surface-variant": "#2e3545",
+        "primary-fixed-dim": "#77d4e5",
+        "slate-text": "#4B5563",
+        "background": "#0c1322",
+        "tertiary-container": "#a46627",
+        "on-tertiary-fixed": "#2e1600",
+        "on-primary-fixed-variant": "#004e59",
+        "on-primary": "#00363e",
+        "on-tertiary-container": "#fffbff",
+        "primary-fixed": "#9eefff",
+        "on-primary-fixed": "#001f24",
+        "tertiary-fixed": "#ffdcc0",
+        "error": "#ffb4ab",
+        "surface-tint": "#77d4e5",
+        "on-error-container": "#ffdad6",
+        "surface-container-high": "#232a3a",
+        "tertiary-fixed-dim": "#ffb877",
+        "on-primary-container": "#f5fdff",
+        "on-tertiary": "#4b2700",
+        "error-container": "#93000a",
+        "primary": "#77d4e5",
+        "inverse-on-surface": "#293040",
+        "on-surface-variant": "#bdc8cb",
+        "pure-white": "#FFFFFF",
+        "surface-container": "#191f2f",
+        "secondary-fixed-dim": "#ddb8ff",
+        "surface-glass": "rgba(17, 24, 39, 0.7)",
+        "tertiary": "#ffb877",
+        "on-error": "#690005",
+        "on-background": "#dce2f7",
+        "on-surface": "#dce2f7",
+        "outline": "#889395",
+        "surface-dim": "#0c1322",
+        "on-tertiary-fixed-variant": "#6c3b00",
+        "surface-container-highest": "#2e3545"
+      },
+      borderRadius: {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      spacing: {
+        "stack-unit": "0.5rem",
+        "container-max": "1200px",
+        "gutter": "2rem",
+        "margin-mobile": "1.25rem"
+      },
+      fontFamily: {
+        "label-caps": ["JetBrains Mono"],
+        "display-lg-mobile": ["Hanken Grotesk"],
+        "headline-md": ["Hanken Grotesk"],
+        "body-lg": ["Inter"],
+        "display-lg": ["Hanken Grotesk"],
+        "body-md": ["Inter"],
+        "code-sm": ["JetBrains Mono"]
+      },
+      fontSize: {
+        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+        "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "headline-md": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400"}],
+        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400"}],
+        "code-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400"}]
+      }
+    }
   },
   plugins: [require("tailwindcss-animate")],
-} 
+}

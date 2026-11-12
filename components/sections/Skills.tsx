@@ -71,7 +71,7 @@ const skills: Skill[] = [
   },
   {
     name: "Tauri",
-    icon: "https://cdn.simpleicons.org/tauri/FFC131",
+    icon: "/tauri.svg",
     category: "DESKTOP",
   },
   {

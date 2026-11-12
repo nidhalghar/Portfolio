@@ -45,12 +45,12 @@ const projects: Project[] = [
     demoLink: "https://diditraveltunisia.com/",
   },
   {
-    title: "Saphir Palace",
+    title: "Agribati",
     description:
-      "Application de gestion hôtelière complète pour réservations et facturations.",
-    image: "/saphir.png",
-    tags: ["Laravel", "Booking"],
-    demoLink: "https://saphir.demos.tn",
+      "Plateforme dédiée au secteur agricole, accompagnée d'un jeu agricole destiné au marché belge.",
+    image: "/Agribati.png",
+    tags: ["Agriculture", "Jeu"],
+    demoLink: "https://www.agribati.com/",
   },
   {
     title: "Tracksolid Pro",

@@ -23,7 +23,7 @@ const jetBrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Nidhal Gharbi | Développeur Web Full Stack",
-  description: "Développeur Full Stack avec un an d'expérience",
+  description: "Développeur Full Stack avec +3 ans d'expérience",
   icons: {
     icon: [
       {
